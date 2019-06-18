@@ -1,0 +1,25 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "explain.it - a web app project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricjohn-acosta/explain.it.git"
+  },
+  "keywords": [
+    "web",
+    "app",
+    "explain"
+  ],
+  "author": "Ricjohn Genoguin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ricjohn-acosta/explain.it/issues"
+  },
+  "homepage": "https://github.com/ricjohn-acosta/explain.it#readme"
+}
