@@ -7,12 +7,13 @@ const server = http.createServer((req, res) => { // Creates an HTTP server that 
   res.statusCode = 200;
   //res.setHeader('Content-Type', 'text/html'); // Set file to HTML
   //res.end('<h1>Hello World</h1>'); // Header
+  app.use(express.static('public'));
+  app.get('/main.html', function(req,res){
+  res.sendFile(__dirname + "/" + "main.html");
+})
+
 });
 
-app.use(express.static('public'));
-app.get('/main.html', function(req,res){
-  res.sendFile(__dirname + "/" + "index.htm");
-})
 
 server.listen(port,() => {
   console.log(`Server running at port `+port);
