@@ -2,8 +2,8 @@
 // Creates an Express application - a framework for Node.js that allows for server based applications that will listen for any i/o reqs from users.
 var express = require('express'); // require() is a Node.js function. Passing in 'express' parameter loads the express module.
 var app = express(); // Stores the variable/function 'express' into the variable 'app'.
-var routes = require('./routes/main')
-var post = require('./routes/post')
+var routes = require('./controllers/main')
+var post = require('./controllers/post')
 
 // Set the port of application
 // process.env.PORT for whatever port Heroku gives and port:3000 as our local port.
