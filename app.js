@@ -5,7 +5,6 @@ const port = process.env.PORT || 3000 // Let port be whatever is in the environm
 
 const server = http.createServer((req, res) => { // Creates an HTTP server that listens to server ports and gives a response back to the client.
   res.statusCode = 200;
-  res.sendFile(__dirname + '/main.html');
   //res.setHeader('Content-Type', 'text/html'); // Set file to HTML
   //res.end('<h1>Hello World</h1>'); // Header
 });
