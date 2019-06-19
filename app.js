@@ -12,6 +12,9 @@ app.set('view engine', 'ejs');
 // express.static is a built-in middleware function that serves static files/assets (css,js,html).
 app.use(express.static(__dirname + '/public'));
 // app.get is a function that routes HTTP GET requests to the specified path with the specified callback functions. first param = root directory
+app.get('/',function(req,res ) {
+  res.render('main');
+});
 
 app.listen(port, function() {
   console.log('Server running on localhost:' + port);
