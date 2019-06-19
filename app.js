@@ -8,12 +8,11 @@ const server = http.createServer((req, res) => { // Creates an HTTP server that 
   //res.setHeader('Content-Type', 'text/html'); // Set file to HTML
   //res.end('<h1>Hello World</h1>'); // Header
   app.use(express.static('public'));
-  app.get('/main.html', function(req,res){
-  res.sendFile(__dirname + "/" + "main.html");
+  app.get('/main.html', function(req, res) {
+    res.sendFile(__dirname + "/" + "main.html");
+  })
+
 })
-
-});
-
 
 server.listen(port,() => {
   console.log(`Server running at port `+port);
