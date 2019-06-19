@@ -1,19 +1,19 @@
-var express = require('express');
-var app = express();
-const http = require('http'); // Includes HTTP module which allows node.js to transfer data over the HTTP.
-const port = process.env.PORT || 3000 // Let port be whatever is in the environment variable PORT or localhost 3000
 
-const server = http.createServer((req, res) => { // Creates an HTTP server that listens to server ports and gives a response back to the client.
-  res.statusCode = 200;
-  //res.setHeader('Content-Type', 'text/html'); // Set file to HTML
-  //res.end('<h1>Hello World</h1>'); // Header
-  app.use(express.static('public'));
-  app.get('/main.html', function(req, res) {
-    res.sendFile(__dirname + "/" + "main.html");
-  })
+// Creates an Express application - a framework for Node.js that allows for server based applications that will listen for any i/o reqs from users.
+var express = require('express'); // require() is a Node.js function. Passing in 'express' parameter loads the express module.
+var app = express(); // Stores the variable/function 'express' into the variable 'app'.
 
-})
+// Set the port of application
+// process.env.PORT for whatever port Heroku gives and port:3000 as our local port.
+var port = process.env.PORT || 4000;
 
-server.listen(port,() => {
-  console.log(`Server running at port `+port);
+// express.static is a built-in middleware function that serves static files/assets (css,js,html).
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
+app.get('/',function(req,res ) {
+  res.render('main');
+});
+
+app.listen(port, function() {
+  console.log('Server running on localhost:' + port);
 });
