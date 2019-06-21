@@ -27,6 +27,7 @@ router.get('/', function (req, res, next) {
     res.render('post');
 })
 
+// handles post request and adds into database
 router.post('/', (req, res) => {
     const title = req.body.title;
     const explanation = req.body.explanation;
