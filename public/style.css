@@ -7,12 +7,17 @@ body {
 
 header {
     background: black;
+}
 
+header::after {
+    content: '';
+    display: table;
+    clear: both;
 }
 
 .navContainer {
     margin: 0 auto;
-    width: 50%;
+    width: 30%;
 }
 
 nav {
