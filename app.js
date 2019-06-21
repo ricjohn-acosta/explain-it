@@ -4,18 +4,34 @@ var express = require('express'); // require() is a Node.js function. Passing in
 var app = express(); // Stores the variable/function 'express' into the variable 'app'.
 var routes = require('./controllers/main')
 var post = require('./controllers/post')
+var mysql = require('mysql');
+var bodyParser = require('body-parser');
 
 // Set the port of application
 // process.env.PORT for whatever port Heroku gives and port:3000 as our local port.
 var port = process.env.PORT || 4000;
 
-// set engine used for viewable page - EJS in this case.
+// Connect to remote mysql
+function getConnection() {
+  return mysql.createConnection ({
+    host:"remotemysql.com",
+    port: 3306,
+    user:"nXE9gAAK9C",
+    password:"6FY4uxRfnD",
+    database: "nXE9gAAK9C"
+  })
+}
+var connection = getConnection();
+connection.connect();
+
+// Set engine used for viewable page - EJS in this case.
 app.set('view engine', 'ejs');
 
 // express.static is a built-in middleware function that serves static files/assets (css)
 app.use(express.static('public'));
 app.use('/', routes);
 app.use('/post', post);
+app.use(bodyParser.urlencoded({extended:false}));
 
 
 app.listen(port, function() {
