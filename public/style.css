@@ -18,3 +18,11 @@ h2 {
     color: black;
     font-size: 50px;
 }
+
+/* Navigation Bar Heading */
+h6 { 
+    color:white;
+    margin: 0;
+    padding: 10;
+    font-size: 24px;
+}
