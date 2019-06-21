@@ -38,3 +38,25 @@ nav ul {
 nav li {
     display: inline-block;
 }
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: wheat;
+}
+
+a:active {
+    color: white;
+}
+
+h6 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: 20px;
+}
