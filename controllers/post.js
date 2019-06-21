@@ -22,7 +22,7 @@ function getConnection() {
     console.log('mysql connected..');
   });
   
-
+// handles get request of user to be able to load /post page
 router.get('/', function (req, res, next) {
     res.render('post');
 })
