@@ -3,10 +3,12 @@ body {
     padding: 0px;
     background: #222;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: whitesmoke;
 }
 
 header {
-    background: rgb(15, 15, 15);
+    background: rgb(50, 50, 50);
+    padding: 10px;
 }
 
 header::after {
@@ -59,4 +61,11 @@ h6 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white;
     font-size: 20px;
+}
+
+.porn {
+    color: white;
+}
+.hub {
+    color: orange;
 }
