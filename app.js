@@ -3,9 +3,8 @@
 var express = require('express'); // require() is a Node.js function. Passing in 'express' parameter loads the express module.
 var app = express(); // Stores the variable/function 'express' into the variable 'app'.
 var bodyParser = require('body-parser');
-var routes = require('./controllers/main');
-var post = require('./controllers/post');
-
+var routes = require('./controllers/mainRouter');
+var post = require('./controllers/postRouter');
 // Set the port of application
 // process.env.PORT for whatever port Heroku gives and port:3000 as our local port.
 var port = process.env.PORT || 4000;

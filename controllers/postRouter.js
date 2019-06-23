@@ -1,26 +1,27 @@
 // app.get is a function that routes HTTP GET requests to the specified path with the specified callback functions. first param = root directory second param = callback function
 var express = require('express');
-var router = express.Router();
 var mysql = require('mysql');
+var router = express.Router();
 
+
+  
 // Connect to remote mysql
 function getConnection() {
-    return mysql.createConnection({
-      host: 'remotemysql.com',
-      user: 'nXE9gAAK9C',
-      password: '2nLLI1fG21',
-      database: 'nXE9gAAK9C',
-      port: '3306'
-    })
+  return mysql.createConnection({
+    host: 'remotemysql.com',
+    user: 'nXE9gAAK9C',
+    password: '2nLLI1fG21',
+    database: 'nXE9gAAK9C',
+    port: '3306'
+  })
+}
+var connection = getConnection();
+connection.connect((err) => {
+  if (err) {
+    throw err;
   }
-  
-  var connection = getConnection();
-  connection.connect((err) => {
-    if (err) {
-      throw err;
-    }
-    console.log('mysql connected..');
-  });
+  console.log('mysql connected..');
+});
   
 // handles get request of user to be able to load /post page
 router.get('/', function (req, res, next) {
@@ -37,4 +38,6 @@ router.post('/', (req, res) => {
     res.end();
 })
 
+// equivalent to module.exports = express.router();
 module.exports = router;
+
