@@ -1,43 +1,25 @@
-// app.get is a function that routes HTTP GET requests to the specified path with the specified callback functions. first param = root directory second param = callback function
-var express = require('express');
-var mysql = require('mysql');
-var router = express.Router();
+/* Declare global variables*/
+var express = require('express'); // Import express framework
+var router = express.Router(); // Stores router module into variable router. 
+var connection = require('../config/dbConnection');
 
+/* Connect to remote mysql database */
+connection.checkConnection();
+connection.connect();
 
-  
-// Connect to remote mysql
-function getConnection() {
-  return mysql.createConnection({
-    host: 'remotemysql.com',
-    user: 'nXE9gAAK9C',
-    password: '2nLLI1fG21',
-    database: 'nXE9gAAK9C',
-    port: '3306'
-  })
-}
-var connection = getConnection();
-connection.connect((err) => {
-  if (err) {
-    throw err;
-  }
-  console.log('mysql connected..');
-});
-  
-// handles get request of user to be able to load /post page
-router.get('/', function (req, res, next) {
-    res.render('post');
+/* Router methods that handles user requests*/
+router.get('/', function (req, res, next) { // 
+  res.render('post');
 })
-
-// handles post request and adds into database
 router.post('/', (req, res) => {
-    const title = req.body.title;
-    const explanation = req.body.explanation;
-    const queryString = "INSERT INTO post (post_title,content) VALUES(?,?)"
-    getConnection().query(queryString, [title, explanation]);
-    res.render('post');
-    res.end();
+  const title = req.body.title;
+  const explanation = req.body.explanation;
+  const queryString = "INSERT INTO post (post_title,content) VALUES(?,?)"
+  connection.connect().query(queryString, [title, explanation]);
+  res.render('post');
+  res.end();
 })
 
-// equivalent to module.exports = express.router();
+/* Export router methods used in this file to be used in app.js*/
 module.exports = router;
 
