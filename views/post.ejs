@@ -12,26 +12,45 @@
     <div class="navContainer">
         <div class="explainIt">Explain.it!</div>
         <nav>
-        <ul>
-            <li>
-                <a href="/">Home</a></li>
-        </ul>
+            <ul>
+                <li>
+                    <a href="/">Home</a></li>
+            </ul>
         </nav>
     </div>
 </header>
 
 <body>
     <center>
-    <form action="/post" method="POST">
-        Title:<br>
-        <input placeholder="Title" name="title" style="width:200px">
-        <br>
-        Explanation:<br>
-        <textarea rows="10" placeholder="Explanation" name="explanation" cols="30"> </textarea>
-        <br>
-        <button> Post </button><br>
-        <br>Your post:
-    </form>
+        <form action="/post" method="POST">
+            Title:<br>
+            <input placeholder="Title" name="title" style="width:200px">
+            <br>
+            Explanation:<br>
+            <textarea rows="10" placeholder="Explanation" name="explanation" cols="30"> </textarea>
+            <br>
+            <button id="getContent"> Post </button><br>
+            <br>
+            <div id="output"></div>
+            <script>
+                document.getElementById('getContent').addEventListener('click', getContent);
+
+                function getContent() {
+                    fetch('http://localhost:4000/postdata')
+                        .then((res) => res.json())
+                        .then((data) => {
+                            let output = '<h2>Your post:</h2>';
+                            data.forEach(function (post) {
+                                output += `
+                                ${post.content}
+                                ` ;
+                            });
+                            document.getElementById('output').innerHTML = output;
+                        })
+                        .catch((err) => console.log(err))
+                }
+            </script>
+        </form>
     </center>
 </body>
 

@@ -5,6 +5,8 @@ var app = express(); // Stores the variable/function 'express' into the variable
 var bodyParser = require('body-parser');
 var main = require('./controllers/mainRouter');
 var post = require('./controllers/postRouter');
+var postData = require('./models/postModel');
+
 
 /* Server */
 var port = process.env.PORT || 4000; // process.env.PORT for whatever port Heroku gives and port:3000 as our local port.
@@ -21,6 +23,7 @@ app.set('view engine', 'ejs');
 
 /* User request middlewares */
 app.use('/post', post);
+app.use('/postData', postData);
 app.use('/', main);
 
 
