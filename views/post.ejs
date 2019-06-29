@@ -29,11 +29,12 @@
             Explanation:<br>
             <textarea rows="10" placeholder="Explanation" name="explanation" cols="30"> </textarea>
             <br>
-            <button id="post" onclick="document.getElementById('success').innerHTML = 'Success!'"> Post </button><div id = "success"></div>
-            <button id="getContent"> View post </button><br>
+            <button id="post" type = "button" onclick="document.getElementById('success').innerHTML = 'Success!'" onsubmit="return false"> Post </button><div id = "success"></div>
+            <button id="getContent" type = "button" onsubmit="return false"> View post </button><br>
             <br>
             <div id="output"></div>
             <script>
+                document.getElementById('post').addEventListener('click', successMsg);
                 document.getElementById('getContent').addEventListener('click', getContent);
 
                 function getContent() {
@@ -44,6 +45,12 @@
                             document.getElementById('output').innerHTML = output;
                         })
                         .catch((err) => console.log(err))
+                }
+
+                function successMsg () {
+                    setTimeout(function() {
+                        document.getElementById('success').innerHTML = ''
+                    }, 5000)
                 }
             </script>
         </form>
