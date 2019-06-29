@@ -29,31 +29,34 @@
             Explanation:<br>
             <textarea rows="10" placeholder="Explanation" name="explanation" cols="30"> </textarea>
             <br>
-            <button id="post" type = "button" onclick="document.getElementById('success').innerHTML = 'Success!'" onsubmit="return false"> Post </button><div id = "success"></div>
-            <button id="getContent" type = "button" onsubmit="return false"> View post </button><br>
+            <button id="post" type="submit" return="false"
+                onclick="document.getElementById('success').innerHTML = 'Success!'"> Post </button>
+            <div id="success"></div>
+            <button id="getContent"> View post </button><br>
             <br>
             <div id="output"></div>
             <script>
-                document.getElementById('post').addEventListener('click', successMsg);
+                document.getElementById('post').addEventListener('click', reset);
                 document.getElementById('getContent').addEventListener('click', getContent);
 
                 function getContent() {
-                    fetch('https://explain-it.herokuapp.com/postdata')
+                    fetch('http://localhost:4000/postdata')
                         .then((res) => res.json())
                         .then((data) => {
-                            let output = '<h2>Your post:</h2>' + data[data.length-1].content;
+                            let output = '<h2>Your post:</h2>' + data[data.length - 1].content;
                             document.getElementById('output').innerHTML = output;
                         })
                         .catch((err) => console.log(err))
                 }
 
-                function successMsg () {
+                function reset() {
                     setTimeout(function() {
-                        document.getElementById('success').innerHTML = ''
-                    }, 5000)
+                        document.getElementById("success").innerHTML = '';
+                    }, 3000)
                 }
             </script>
         </form>
     </center>
 </body>
+
 </html>
