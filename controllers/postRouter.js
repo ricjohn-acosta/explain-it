@@ -22,6 +22,7 @@ router.get('/', function (req, res, next) {
 
 
 
+
 /* Export router methods used in this file to be used in app.js*/
 module.exports = router;
 
