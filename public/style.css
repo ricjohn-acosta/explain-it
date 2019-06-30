@@ -1,71 +1,54 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 100px;
     margin: 0px;
     padding: 0px;
-    background: #222;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: whitesmoke;
+    padding-top: 150px;
+    color: rgb(255, 255, 255);
+    background-color: #C9C2C1;
+    background-image: url("https://picsum.photos/id/7/1920/1080/?blur");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-header {
-    background: rgb(50, 50, 50);
-    padding: 10px;
+nav.navbar {
+    padding: 40px;
 }
 
-header::after {
-    content: '';
-    display: table;
-    clear: both;
+li.nav-item2 {
+    position: relative;
+    right: -1350px;
 }
 
-.logo {
-    float: left;
-    margin: 1px;
+div.welcome {
+    font-size: 90px;
+    font-weight: bolder;
+    position: relative;
+    padding-left: 100px;
+    padding-top: 100px;
 }
 
-.navContainer {
-    margin: 0 auto;
-    width: 30%;
+div.welcome-body {
+    font-size: 50px;
+    position: relative;
+    padding-left: 100px;
+    padding-top: 25px;
+    height: 1920px;
 }
 
-nav {
-    float: right;
+#clickScroll {
+    text-decoration: none;
+    color: inherit;
 }
 
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-nav li {
-    display: inline-block;
-}
-
-a:link {
-    color: white;
-}
-
-a:visited {
-    color: white;
-}
-
-a:hover {
-    color: wheat;
-}
-
-a:active {
-    color: white;
-}
-
-h6 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    font-size: 20px;
-}
-
-.porn {
-    color: white;
-}
-.hub {
-    color: orange;
+#formSection {
+    height: 2500px;
+    position: relative;
+    padding-top: 200px;
+    font-weight: bold;
+    font-size: 75px;
 }
