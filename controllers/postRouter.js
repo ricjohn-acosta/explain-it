@@ -10,14 +10,16 @@ connection.connect();
 /* Router methods that handles user requests*/
 
 
-router.post('/', function (req, res) {
+router.post('/', function (req,res) {
   const title = req.body.title;
   const explanation = req.body.explanation;
   const queryString = "INSERT INTO post (post_title,content) VALUES(?,?)"
   connection.connect().query(queryString, [title, explanation]);
+  res.status(204).send();
 })
 router.get('/', function (req, res, next) {
   res.render('post');
+  next();
 })
 
 

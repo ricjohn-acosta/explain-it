@@ -22,7 +22,7 @@
 
 <body>
     <center>
-        <form action="/post" method="POST">
+        <form id="form" action="/post" method="POST">
             Title:<br>
             <input placeholder="Title" name="title" style="width:200px">
             <br>
@@ -35,25 +35,31 @@
             <button id="getContent"> View post </button><br>
             <br>
             <div id="output"></div>
+
+            <!--
+                Scripts
+            -->
             <script>
                 document.getElementById('post').addEventListener('click', reset);
                 document.getElementById('getContent').addEventListener('click', getContent);
 
                 function getContent() {
-                    fetch('https://explain-it.herokuapp.com/postdata')
+                    fetch('http://localhost:4000/postdata')
                         .then((res) => res.json())
                         .then((data) => {
                             let output = '<h2>Your post:</h2>' + data[data.length - 1].content;
                             document.getElementById('output').innerHTML = output;
                         })
                         .catch((err) => console.log(err))
+                    document.getElementById("form").reset();
                 }
 
                 function reset() {
-                    setTimeout(function() {
+                    setTimeout(function () {
                         document.getElementById("success").innerHTML = '';
                     }, 3000)
                 }
+
             </script>
         </form>
     </center>
