@@ -8,7 +8,7 @@ body {
     margin: 0px;
     padding: 0px;
     padding-top: 150px;
-    color: rgb(255, 255, 255);
+    color: rgb(226, 222, 222);
     background-color: #C9C2C1;
     background-image: url("https://picsum.photos/id/7/1920/1080/?blur");
     background-size: cover;
@@ -64,6 +64,10 @@ div.welcome-body {
     padding-top: 200px;
     font-weight: bold;
     font-size: 75px;
+}
+
+#output {
+    font-size: 45px;
 }
 
 hr {
