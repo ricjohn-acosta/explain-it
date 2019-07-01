@@ -4,6 +4,7 @@ var app = express(); // Stores the variable/function 'express' into the variable
 var bodyParser = require('body-parser');
 var main = require('./controllers/mainRouter');
 var postData = require('./models/postModel');
+var $ = require('jquery');
 
 
 /* Server */

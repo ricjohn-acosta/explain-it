@@ -109,7 +109,7 @@ hr {
     transition      : background-color .3s,
         opacity .5s, visibility .5s;
     opacity   : 0;
-    visibility: hidden;
+    visibility: visible;
     z-index   : 1000;
 }
 

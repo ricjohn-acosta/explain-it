@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS + Fonts -->
@@ -82,72 +83,68 @@
 
 
 
-                <!-- Scripts -->
-                <script>
-                    document.getElementById('post').addEventListener('click', reset);
-                    document.getElementById('getContent').addEventListener('click', getContent);
 
-                    function getContent() {
-                        let explanation;
-                        explanation = document.getElementById('conceptForm').value;
-                        if (explanation == "") {
-                            alert("Please write an explanation.");
-                            return false;
-                        };
-                        fetch('https://explain-it.herokuapp.com/postdata')
-                            .then((res) => res.json())
-                            .then((data) => {
-                                let output = data[data.length - 1].content;
-                                document.getElementById('output').innerHTML = output;
-                            })
-                            .catch((err) => console.log(err))
 
-                        location.href = "https://explain-it.herokuapp.com/#compare"
-                        document.getElementById("form").reset();
-                    }
 
-                    function reset() {
-                        let title = document.getElementById('titleForm').value;
-                        if (title == "") {
-                            alert("Please write a title.");
-                            return false;
-                        };
-                        setTimeout(function () {
-                            document.getElementById("success").style.visibility = "visible";
-                        }, 1000)
-                    }  
-                </script>
             </form>
         </div>
     </div>
+    <!-- Scripts -->
+    <script>
+        document.getElementById('post').addEventListener('click', reset);
+        document.getElementById('getContent').addEventListener('click', getContent);
 
+        function getContent() {
+            let explanation;
+            explanation = document.getElementById('conceptForm').value;
+            if (explanation == "") {
+                alert("Please write an explanation.");
+                return false;
+            };
+            fetch('http://localhost:4000/postdata')
+                .then((res) => res.json())
+                .then((data) => {
+                    let output = data[data.length - 1].content;
+                    document.getElementById('output').innerHTML = output;
+                })
+                .catch((err) => console.log(err))
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
-            jQuery(document).ready(function () {
-                var btn = $('#button-test');
-                $(window).scroll(function () {
-                    if ($(window).scrollTop() > 300) {
-                        btn.addClass('show');
-                    } else {
-                        btn.removeClass('show');
-                    }
-                });
+            location.href = "http://localhost:4000/#compare"
+            document.getElementById("form").reset();
+        }
 
-                btn.on('click', function (e) {
-                    e.preventDefault();
-                    $('html', 'body').animate({ scrollTop: 0 }, '300');
-                });
+        function reset() {
+            let title = document.getElementById('titleForm').value;
+            if (title == "") {
+                alert("Please write a title.");
+                return false;
+            };
+            setTimeout(function () {
+                document.getElementById("success").style.visibility = "visible";
+            }, 1000)
+        }
+    </script>
+    <script>
+        jQuery(document).ready(function () {
+
+            var btn = $('#button-test');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
             });
-        </script>
 
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+        });
+    </script>
+
 </body>
 
 </html>
