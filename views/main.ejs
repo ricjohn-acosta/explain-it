@@ -17,7 +17,8 @@
 <header>
     <nav class="navbar navbar-expand-xl fixed-top navbar-light" style="background-color: #f1ebeb;">
         <a class="navbar-brand" href="/">Explain.it</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -27,7 +28,8 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item2 dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Menu
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,7 +44,9 @@
 
 <body>
     <div class="welcome">
-        Welcome
+        <div id = "welcomeText">
+            Welcome
+        </div>
         <div class="welcome-body">
             <a href="#explain" id="clickScroll">Click to get started..</a>
         </div>
@@ -52,15 +56,18 @@
             <form id="form" action="/" method="POST">
                 <div class="form-group">
                     <label for="title">Concept:</label>
-                    <input class="form-control input-sm col-sm-2" name="title" placeholder="Photosynthesis">
+                    <input class="form-control input-sm col-sm-2" name="title" id="titleForm" placeholder="Photosynthesis">
                 </div>
                 <div class="form-group">
                     <label for="concept">Explain it:</label>
-                    <textarea class="form-control input-sm col-sm-7" name="concept" rows="10" placeholder="Essential for the growth of plants..."></textarea>
+                    <textarea class="form-control input-sm col-sm-7" name="concept" id="conceptForm" rows="10"
+                        placeholder="Essential for the growth of plants..."></textarea>
                 </div>
-                <button id="post" class="btn btn-light btn-lg" type="submit" return="false" onclick="document.getElementById('success').innerHTML = 'Success!'"> Post </button>
-                <p id="success"></p>
-                <button id="getContent" class="btn btn-light btn-lg"> View post </button>
+                <div class="buttons">
+                    <button id="post" class="btn btn-light btn-lg" type="submit"> Post </button>
+                    <div id="success">Success!</div>
+                    <button id="getContent" class="btn btn-light btn-lg"> View post </button>
+                </div>
                 <div id="compare">
                     <div id="stepTwo">
                         Step 2: Compare your explanation with others!
@@ -77,7 +84,13 @@
                     document.getElementById('getContent').addEventListener('click', getContent);
 
                     function getContent() {
-                        fetch('https://explain-it.herokuapp.com/postdata')
+                        let explanation;
+                        explanation = document.getElementById('conceptForm').value;
+                        if (explanation=="") {
+                            alert("Please write an explanation.");
+                            return false;
+                        };
+                        fetch('http://localhost:4000/postdata')
                             .then((res) => res.json())
                             .then((data) => {
                                 let output = data[data.length - 1].content;
@@ -85,19 +98,23 @@
                             })
                             .catch((err) => console.log(err))
 
-                        location.href = "https://explain-it.herokuapp.com/#compare"
+                        location.href = "http://localhost:4000/#compare"
                         document.getElementById("form").reset();
                     }
 
                     function reset() {
-                        setTimeout(function() {
-                            document.getElementById("success").innerHTML = '';
-                        }, 3000)
-                        setTimeout(function() {
-                            document.getElementbyId("output").disabled = true;
-                        }, 3000)
+                        let title = document.getElementById('titleForm').value;
+                        if (title=="") {
+                            alert("Please write a title.");
+                            return false;
+                        };
+                        setTimeout(function () {
+                            document.getElementById("success").style.visibility = "visible";
+                        }, 1000)
                     }
                 </script>
+
+
             </form>
         </div>
     </div>
@@ -105,6 +122,7 @@
 
 
 
+    <!--onclick="document.getElementById('success').innerHTML = 'Success!'"-->
 
 
 
@@ -124,10 +142,15 @@
 
 
 
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

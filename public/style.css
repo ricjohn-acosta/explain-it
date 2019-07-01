@@ -24,18 +24,21 @@ li.nav-item2 {
     right: -1350px;
 }
 
-div.welcome {
+.welcome {
     font-size: 90px;
     font-weight: bolder;
     position: relative;
-    padding-left: 100px;
     padding-top: 100px;
+}
+
+#welcomeText {
+    padding-left:100px;
 }
 
 div.welcome-body {
     font-size: 50px;
     position: relative;
-    padding-left: 100px;
+    padding-left: 150px;
     padding-top: 25px;
     height: 1920px;
 }
@@ -57,6 +60,14 @@ div.welcome-body {
     font-size: 25px;
 }
 
+.form-group {
+    padding-left:100px;
+}
+
+.buttons {
+    padding-left:100px;
+}
+
 #compare {
     height: 2500px;
     position: relative;
@@ -70,8 +81,16 @@ div.welcome-body {
     font-size: 45px;
 }
 
+#stepTwo {
+    padding-right: -2000px;
+}
+
 hr {
-    border-width: 1px;
+    border-width: 0.8px;
     border-color: white;
     width: 70%;
+}
+
+#success {
+    visibility: hidden;
 }
