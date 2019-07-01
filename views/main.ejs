@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS + Fonts -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="bootstrap.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
@@ -43,8 +44,9 @@
 </header>
 
 <body>
+    <a id="button-test"></a>
     <div class="welcome">
-        <div id = "welcomeText">
+        <div id="welcomeText">
             Welcome
         </div>
         <div class="welcome-body">
@@ -56,7 +58,8 @@
             <form id="form" action="/" method="POST">
                 <div class="form-group">
                     <label for="title">Concept:</label>
-                    <input class="form-control input-sm col-sm-2" name="title" id="titleForm" placeholder="Photosynthesis">
+                    <input class="form-control input-sm col-sm-2" name="title" id="titleForm"
+                        placeholder="Photosynthesis">
                 </div>
                 <div class="form-group">
                     <label for="concept">Explain it:</label>
@@ -78,6 +81,7 @@
 
 
 
+
                 <!-- Scripts -->
                 <script>
                     document.getElementById('post').addEventListener('click', reset);
@@ -86,7 +90,7 @@
                     function getContent() {
                         let explanation;
                         explanation = document.getElementById('conceptForm').value;
-                        if (explanation=="") {
+                        if (explanation == "") {
                             alert("Please write an explanation.");
                             return false;
                         };
@@ -104,47 +108,40 @@
 
                     function reset() {
                         let title = document.getElementById('titleForm').value;
-                        if (title=="") {
+                        if (title == "") {
                             alert("Please write a title.");
                             return false;
                         };
                         setTimeout(function () {
                             document.getElementById("success").style.visibility = "visible";
                         }, 1000)
-                    }
+                    }  
                 </script>
-
-
             </form>
         </div>
     </div>
 
 
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+            jQuery(document).ready(function () {
+                var btn = $('#button-test');
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 300) {
+                        btn.addClass('show');
+                    } else {
+                        btn.removeClass('show');
+                    }
+                });
+
+                btn.on('click', function (e) {
+                    e.preventDefault();
+                    $('html', 'body').animate({ scrollTop: 0 }, '300');
+                });
+            });
+        </script>
 
 
-    <!--onclick="document.getElementById('success').innerHTML = 'Success!'"-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>

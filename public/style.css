@@ -3,15 +3,15 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    text-shadow: 100px;
-    margin: 0px;
-    padding: 0px;
-    padding-top: 150px;
-    color: rgb(226, 222, 222);
-    background-color: #C9C2C1;
-    background-image: url("https://picsum.photos/id/7/1920/1080/?blur");
-    background-size: cover;
+    font-family          : 'Montserrat', sans-serif;
+    text-shadow          : 100px;
+    margin               : 0px;
+    padding              : 0px;
+    padding-top          : 150px;
+    color                : rgb(226, 222, 222);
+    background-color     : #C9C2C1;
+    background-image     : url("https://picsum.photos/id/7/1920/1080/?blur");
+    background-size      : cover;
     background-attachment: fixed;
 }
 
@@ -21,39 +21,39 @@ nav.navbar {
 
 li.nav-item2 {
     position: relative;
-    right: -1350px;
+    right   : -1350px;
 }
 
 .welcome {
-    font-size: 90px;
+    font-size  : 90px;
     font-weight: bolder;
-    position: relative;
+    position   : relative;
     padding-top: 100px;
 }
 
 #welcomeText {
-    padding-left:100px;
+    padding-left: 100px;
 }
 
 div.welcome-body {
-    font-size: 50px;
-    position: relative;
+    font-size   : 50px;
+    position    : relative;
     padding-left: 150px;
-    padding-top: 25px;
-    height: 1920px;
+    padding-top : 25px;
+    height      : 1920px;
 }
 
 #clickScroll {
     text-decoration: none;
-    color: inherit;
+    color          : inherit;
 }
 
 #explain {
-    height: 2500px;
-    position: relative;
+    height     : 2500px;
+    position   : relative;
     padding-top: 200px;
     font-weight: bold;
-    font-size: 75px;
+    font-size  : 75px;
 }
 
 #form {
@@ -61,20 +61,20 @@ div.welcome-body {
 }
 
 .form-group {
-    padding-left:100px;
+    padding-left: 100px;
 }
 
 .buttons {
-    padding-left:100px;
+    padding-left: 100px;
 }
 
 #compare {
-    height: 2500px;
-    position: relative;
-    text-align: center;
+    height     : 2500px;
+    position   : relative;
+    text-align : center;
     padding-top: 200px;
     font-weight: bold;
-    font-size: 75px;
+    font-size  : 75px;
 }
 
 #output {
@@ -88,9 +88,51 @@ div.welcome-body {
 hr {
     border-width: 0.8px;
     border-color: white;
-    width: 70%;
+    width       : 70%;
 }
 
 #success {
     visibility: hidden;
+}
+
+
+#button-test {
+    display         : inline-block;
+    background-color: #FF9800;
+    width           : 50px;
+    height          : 50px;
+    text-align      : center;
+    border-radius   : 4px;
+    position        : fixed;
+    bottom          : 30px;
+    right           : 30px;
+    transition      : background-color .3s,
+        opacity .5s, visibility .5s;
+    opacity   : 0;
+    visibility: hidden;
+    z-index   : 1000;
+}
+
+#button-test::after {
+    content    : "\f077";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style : normal;
+    font-size  : 2em;
+    line-height: 50px;
+    color      : #fff;
+}
+
+#button-test:hover {
+    cursor          : pointer;
+    background-color: #333;
+}
+
+#button-test:active {
+    background-color: #555;
+}
+
+#button-test.show {
+    opacity   : 1;
+    visibility: visible;
 }
